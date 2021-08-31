@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+{% block title %}
+Home
+{% endblock %} 
+
+{% block content%}
+<h1>Welcome to Cher!</h1>
+<h3>Today I would like to:</h3>
+
+<ul class="list-group list-group-flush" id="reflections">
+  {% for reflection in user.reflections %}
+  <li class="list-group-item">
+    {{ reflection.data }}
+    <button type="button" class="close" onClick="deleteReflection({{reflection.id}})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <textarea name="reflection" id="reflection" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">placeholder</button>
+  </div>
+</form>
+{% endblock %}
